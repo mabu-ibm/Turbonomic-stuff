@@ -24,10 +24,10 @@ spec:
         - containerPort: 8080
         resources:
           limits:
-            cpu: 100m
-            memory: 128Mi
+            cpu: "100m"
+            memory: "128Mi"
           requests:
-            cpu: 50m
+            cpu: "50m"
       - name: stress-ng1
         args:
         - -c
@@ -41,7 +41,7 @@ spec:
         name: stress-ng
         resources:
           limits:
-            cpu: 100m
+            cpu: "100m"
           requests:
-            cpu: 50m
+            cpu: "50m"
       restartPolicy: Always
