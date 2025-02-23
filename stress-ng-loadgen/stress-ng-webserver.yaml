@@ -8,13 +8,6 @@ metadata:
     name: stress-ng-deployment
     instana-autotrace: "true"
 spec:
-  resources:
-    limits:
-       cpu: "600m"
-       memory: "550Mi"
-    requests:
-      cpu: "100m"
-      memory: "200Mi"
   replicas: 1
   selector:
     matchLabels:
@@ -24,6 +17,13 @@ spec:
       labels:
         app: stress-ng-webserver
     spec:
+      resources:
+         limits:
+           cpu: "600m"
+           memory: "550Mi"
+         requests:
+           cpu: "100m"
+           memory: "200Mi"
       containers:
       - name: stress-ng-flaskwebserver
         image: mbx1010/flask-app
