@@ -41,7 +41,7 @@ spec:
         name: stress-ng
         resources:
           limits:
-            cpu: 0.200
+            cpu: 0.500
           requests:
-            cpu: 0.50
+            cpu: 0.10
       restartPolicy: Always
