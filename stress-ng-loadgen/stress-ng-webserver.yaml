@@ -26,7 +26,6 @@ spec:
           limits:
             cpu: "300m"
             memory: "250Mi"
-    
           requests:
             cpu: "100m"
             memory: "200Mi"
@@ -40,7 +39,6 @@ spec:
         command:
         - /stress-ng
         image: alexeiled/stress-ng
-        name: stress-ng
         resources:
           limits:
             cpu: "500m"
