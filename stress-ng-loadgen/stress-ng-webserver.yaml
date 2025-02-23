@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         app: stress-ng-webserver
-        instana-autotrace: "true"
+#        instana-autotrace: "true"
     spec:
       containers:
       - name: stress-ng-flaskwebserver
