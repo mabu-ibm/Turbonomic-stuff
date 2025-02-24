@@ -15,33 +15,32 @@ spec:
       labels:
         app: stress1-ng-webserver
     spec:
-      restartPolicy: Always
       containers:
       - name: stress1-ng-flaskwebserver
         image: mbx1010/flask-app
         resources:
           limits:
-            cpu: "200m"
-            memory: "250Mi"
+            cpu: 200m
+            memory: 250Mi
           requests:
-            cpu: "100m"
-            memory: "120Mi"
+            cpu: 100m
+            memory: 120Mi
         ports:
         - containerPort: 8080
 
       - name: stress1-ng
         image: alexeiled/stress-ng
         command: ["/stress-ng"]
-        args: 
+        args:
           - "-c"
-          - "150"  # Number of workers
+          - "150"
           - "-l"
-          - "100"  # CPU load percentage
+          - "100"
           - "-v"
         resources:
           limits:
-            cpu: "200m"
-            memory: "250Mi"
+            cpu: 200m
+            memory: 250Mi
           requests:
-            cpu: "100m"
-            memory: "250Mi"
+            cpu: 100m
+            memory: 250Mi
