@@ -17,16 +17,16 @@ spec:
       labels:
         app: stress-ng-webserver
     spec:
-      resources:
-         limits:
-           cpu: "600m"
-           memory: "550Mi"
-         requests:
-           cpu: "100m"
-           memory: "200Mi"
       containers:
       - name: stress-ng-flaskwebserver
         image: mbx1010/flask-app
+        resources:
+           limits:
+              cpu: '200m'
+              memory: '250Mi'
+           requests:
+              cpu: '100m'
+              memory: '120Mi'
         ports:
         - containerPort: 8080
       - name: stress-ng
@@ -39,4 +39,11 @@ spec:
         command:
         - /stress-ng
         image: alexeiled/stress-ng
+        resources:
+           limits:
+               cpu: '200m'
+               memory: '250Mi'
+           requests:
+               cpu: '100m'
+               memory: '250Mi'
       restartPolicy: Always
