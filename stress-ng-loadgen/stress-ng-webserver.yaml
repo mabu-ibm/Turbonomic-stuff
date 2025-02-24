@@ -1,11 +1,9 @@
-# stress-ng-deployment.yaml
-# home
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: stress-ng-deployment
-  labels: 
-    name: stress-ng-deployment
+  labels:
+    app: stress-ng-deployment
     instana-autotrace: "true"
 spec:
   replicas: 1
@@ -17,33 +15,33 @@ spec:
       labels:
         app: stress-ng-webserver
     spec:
+      restartPolicy: Always
       containers:
       - name: stress-ng-flaskwebserver
         image: mbx1010/flask-app
         resources:
-           limits:
-              cpu: '200m'
-              memory: '250Mi'
-           requests:
-              cpu: '100m'
-              memory: '120Mi'
+          limits:
+            cpu: "200m"
+            memory: "250Mi"
+          requests:
+            cpu: "100m"
+            memory: "120Mi"
         ports:
         - containerPort: 8080
+
       - name: stress-ng
-        args:
-        - -c
-        - "150"  # Last Number of worker use 150
-        - -l
-        - "100"  # percentage cpu Load use 100
-        - -v
-        command:
-        - /stress-ng
         image: alexeiled/stress-ng
+        command: ["/stress-ng"]
+        args: 
+          - "-c"
+          - "150"  # Number of workers
+          - "-l"
+          - "100"  # CPU load percentage
+          - "-v"
         resources:
-           limits:
-               cpu: '200m'
-               memory: '250Mi'
-           requests:
-               cpu: '100m'
-               memory: '250Mi'
-      restartPolicy: Always
+          limits:
+            cpu: "200m"
+            memory: "250Mi"
+          requests:
+            cpu: "100m"
+            memory: "250Mi"
